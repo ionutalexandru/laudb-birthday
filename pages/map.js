@@ -2,7 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 
 export default function Map() {
-  const MapComponent = dynamic(() => import("../components/map"), {
+  const MapComponent = dynamic(() => import("../components/Map"), {
     loading: () => "Loading...",
     ssr: false,
   });
