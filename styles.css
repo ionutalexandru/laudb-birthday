@@ -50,3 +50,28 @@ div.home {
     background-position: 0% 50%;
   }
 }
+
+.place-description > * {
+  @apply mb-4;
+}
+
+.place-description h1 {
+  @apply text-3xl;
+}
+
+.place-description h2 {
+  @apply text-2xl;
+}
+
+.place-description ul,
+.place-description ol {
+  @apply list-inside;
+}
+
+.place-description ul {
+  @apply list-disc;
+}
+
+.place-description ol {
+  @apply list-decimal;
+}
