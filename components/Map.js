@@ -7,7 +7,7 @@ export default function Map({ locations, onClickMarker }) {
   return (
     <MapContainer
       center={locations[0].position}
-      zoom={14}
+      zoom={17}
       scrollWheelZoom={false}
     >
       <TileLayer
