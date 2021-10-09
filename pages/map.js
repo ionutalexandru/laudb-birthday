@@ -5,17 +5,26 @@ import path from "path";
 import Card from "../components/Card";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
+import Modal from "../components/Modal";
 
 import * as React from "react";
 
 export default function Map({ places }) {
   const [activeMarker, setActiveMarker] = React.useState(null);
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+
+  const unselectMarker = () => {
+    setModalIsOpen(false);
+    setActiveMarker(null);
+  };
 
   const onClickMarker = (id) => {
     if (!activeMarker || activeMarker !== id) {
       setActiveMarker(id);
+      setModalIsOpen(true);
     } else {
       setActiveMarker(null);
+      setModalIsOpen(false);
     }
   };
 
@@ -40,21 +49,22 @@ export default function Map({ places }) {
 
       <main className="flex flex-col items-center justify-center w-full h-full flex-1 text-center">
         <div id="map" className="w-full h-full">
-          <MapComponent locations={locations} onClickMarker={onClickMarker} />
+          <MapComponent
+            locations={locations}
+            onClickMarker={onClickMarker}
+            selectedPlace={selectedPlace}
+          />
         </div>
-        {!selectedPlace ? null : (
-          <div
-            className="static md:fixed bottom-0 right-0 w-screen md:w-1/3 h-2/4 md:h-screen"
-            style={{ zIndex: 990 }}
-          >
-            <Card
-              title={selectedPlace.data.title}
-              position={selectedPlace.data.position}
-              source={selectedPlace.content}
-            />
-          </div>
-        )}
       </main>
+      {!selectedPlace ? null : (
+        <Modal
+          isOpen={modalIsOpen}
+          onClose={unselectMarker}
+          title={selectedPlace.data.title}
+          content={selectedPlace.content}
+          position={selectedPlace.data.position}
+        />
+      )}
     </div>
   );
 }

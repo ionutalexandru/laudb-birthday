@@ -9,6 +9,16 @@
   height: 100%;
 }
 
+.leaflet-pane {
+  z-index: 0 !important;
+}
+
+.leaflet-control,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1 !important;
+}
+
 div.home {
   -webkit-animation: AnimatedBackground 30s ease infinite;
   -moz-animation: AnimatedBackground 30s ease infinite;
