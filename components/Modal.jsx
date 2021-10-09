@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote";
+import * as React from "react";
 
 const Bike = () => (
   <svg
@@ -21,8 +22,24 @@ export default function Modal({
   position = [],
 }) {
   if (!isOpen) return null;
+  const modalContentRef = React.useRef(null);
+  const onClickModal = ({ target, code }) => {
+    if (target !== modalContentRef.current || code === "Escape") {
+      onClose();
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("keydown", ({ code }) => {
+      if (code === "Escape") onClose();
+    });
+  }, []);
+
   return (
-    <div className="absolute bg-black bg-opacity-30 h-screen w-screen z-10">
+    <div
+      onClick={onClickModal}
+      className="absolute bg-black bg-opacity-30 h-screen w-screen z-10"
+    >
       <div className="relative flex flex-col items-center justify-center w-full h-full">
         <div className="relative text-left antialiased w-full md:max-w-screen-md h-full md:md:h-4/5 shadow-2xl">
           <div className="absolute z-40 top-4 md:-top-4 right-4 md:-right-4">
@@ -53,7 +70,10 @@ export default function Modal({
               </svg>
             </button>
           </div>
-          <div className="relative w-full h-full overflow-auto bg-black md:rounded-lg">
+          <div
+            className="relative w-full h-full overflow-auto bg-black md:rounded-lg"
+            ref={modalContentRef}
+          >
             <div className="absolute md:rounded-lg inset-0 z-20 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
             <div className="flex flex-col h-full max-w-screen-md text-white">
               <div className="relative w-full h-1/2">
