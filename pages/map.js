@@ -18,9 +18,9 @@ function List({ locations, onClickMarker }) {
         {locations.map((location) => (
           <li
             key={`li-${location.data.id}`}
-            className="flex flex-row justify-between py-4"
+            className="flex flex-row justify-between py-4 text-left"
           >
-            <div className="text-xl text-black antialiased">
+            <div className="text-black antialiased font-semibold text-base md:text-xl">
               {location.data.title}
             </div>
             <button
