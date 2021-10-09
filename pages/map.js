@@ -88,7 +88,7 @@ export default function Map({ places }) {
           <List locations={places} onClickMarker={onClickMarker} />
         )}
         <button
-          className="absolute bottom-2 left-2 bg-white p-3 border-black shadow-xl"
+          className="absolute top-2 right-2 bg-white p-3 border-black shadow-xl"
           onClick={() => setShowMap((curr) => !curr)}
         >
           Show {showMap ? "list" : "map"}
