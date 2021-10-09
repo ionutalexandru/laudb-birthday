@@ -75,7 +75,16 @@ div.home {
 
 .place-description ul,
 .place-description ol {
-  @apply list-inside;
+  @apply list-outside;
+  @apply ml-4;
+}
+
+.place-description ul ul,
+.place-description ol ul,
+.place-description ol ul,
+.place-description ul ol {
+  @apply list-outside;
+  @apply ml-8;
 }
 
 .place-description ul {
@@ -84,4 +93,8 @@ div.home {
 
 .place-description ol {
   @apply list-decimal;
+}
+
+.place-description li {
+  @apply mb-2;
 }

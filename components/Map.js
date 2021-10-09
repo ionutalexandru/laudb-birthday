@@ -18,7 +18,7 @@ export default function Map({ locations, onClickMarker, selectedPlace }) {
   const panToPosition = selectedPlace ? selectedPlace.data.position : null;
 
   return (
-    <MapContainer center={center} zoom={17} scrollWheelZoom={false}>
+    <MapContainer center={center} zoom={16} scrollWheelZoom={false}>
       <ChangeView position={panToPosition} />
       <TileLayer
         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png"
